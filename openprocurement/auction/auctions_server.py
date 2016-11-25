@@ -133,6 +133,7 @@ js = Bundle("vendor/pouchdb/dist/pouchdb.js",
             "static/js/controllers.js",
             "vendor/moment/locale/uk.js",
             "vendor/moment/locale/ru.js",
+            "vendor/html2canvas/build/html2canvas.min.js",
             filters='jsmin', output='min/all_js_%(version)s.js')
 assets.register('all_js', js)
 ################################################################################

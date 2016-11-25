@@ -355,6 +355,25 @@ angular.module('auction')
         return false;
     }
 
+    function doScreenshot(id, filename){
+      var imgURL;
+      var MIME_TYPE = "image/png";
+      var dlLink = document.createElement('a');
+      var element = document.getElementById(id) || document.body;
+
+      dlLink.download = filename || 'Screenshot';
+      html2canvas(element, {
+        onrendered: function(canvas) {
+          imgURL = canvas.toDataURL(MIME_TYPE);
+          dlLink.href = imgURL;
+          dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(':');
+          document.body.appendChild(dlLink);
+          dlLink.click();
+          document.body.removeChild(dlLink);
+        }
+      });
+    }
+
     return {
       'prepare_info_timer_data': prepare_info_timer_data,
       'prepare_progress_timer_data': prepare_progress_timer_data,
@@ -370,7 +389,8 @@ angular.module('auction')
       'polarToCartesian': polarToCartesian,
       'generateUUID': generateUUID,
       'detectIE': detectIE,
-      'UnsupportedBrowser': UnsupportedBrowser
+      'UnsupportedBrowser': UnsupportedBrowser,
+      'doScreenshot': doScreenshot
     };
   }]);
 

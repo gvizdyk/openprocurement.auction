@@ -1,14 +1,18 @@
 // Karma configuration
 // Generated on Tue Jan 27 2015 16:07:18 GMT+0200 (EET)
+//to run tests install karma globaly then: 
+//npm test
+//or 
+//karma start 
 
 module.exports = function(config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
     files: [
+      'static/vendor/angular/angular.js',
       'static/vendor/event-source-polyfill/eventsource.js',
       'static/vendor/moment/min/moment.min.js',
-      'static/vendor/angular/angular.js',
       'static/vendor/angular-mocks/angular-mocks.js',
       'static/vendor/angular-cookies/angular-cookies.js',
       'static/vendor/pouchdb/dist/pouchdb.js',
@@ -18,8 +22,11 @@ module.exports = function(config) {
       'static/vendor/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
       'static/vendor/angular-translate-storage-local/angular-translate-storage-local.js',
       'static/vendor/angular-growl-2/build/angular-growl.js',
+      'static/vendor/angular-gtm-logger/angular-gtm-logger.js',
       'static/vendor/moment/locale/uk.js',
       'static/vendor/moment/locale/ru.js',
+      'static/vendor/angular-ellipses/src/truncate.js',
+      'static/vendor/mathjs/dist/math.js',
       'static/static/js/*.js',
       {pattern: 'tests/js/*.js', included: true}
     ],
@@ -61,7 +68,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     plugins:[
       'karma-jasmine',
       'karma-coverage',

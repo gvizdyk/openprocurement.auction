@@ -11,7 +11,7 @@ angular.module('auction').controller('AuctionController', [
     $timeout, $http, $log, $cookies, $cookieStore, $window,
     $rootScope, $location, $translate, $filter, growl, growlMessages, $aside, $q
   ) {
-    if (AuctionUtils.inIframe()) {
+    if (AuctionUtils.inIframe() && 'localhost'!= location.hostname) {
       $log.error('Starts in iframe');
       window.open(location.href, '_blank');
       return false;
@@ -764,9 +764,10 @@ angular.module('auction').controller('AuctionController', [
     $scope.scroll_to_stage = function() {
       AuctionUtils.scroll_to_stage($scope.auction_doc, $scope.Rounds);
     };
+    /*Unnecessary
     $scope.array = function(int) {
       return new Array(int);
-    };
+    };*/
     $scope.open_menu = function() {
       var modalInstance = $aside.open({
         templateUrl: 'templates/menu.html',
@@ -794,7 +795,14 @@ angular.module('auction').controller('AuctionController', [
           precision: 2
         }).replace(/(\d)(?=(\d{3})+\.)/g, '$1 ').replace(/\./g, ","));
       }
-    }
+    };
+    $scope.doScreenshot = AuctionUtils.doScreenshot;
+    $scope.keyUpListener = function(event){
+      if(event.ctrlKey && event.altKey && event.which == 83){
+        event.preventDefault();
+        AuctionUtils.doScreenshot();
+      }
+    };
     $scope.start();
   }
 ]);

@@ -25,7 +25,7 @@
     "mocha": "~2.1.0"
   },
   "scripts": {
-    "test": "karma"
+    "test": "karma start"
   },
   "author": "",
   "license": "Apache License 2.0"

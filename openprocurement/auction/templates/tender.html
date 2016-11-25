@@ -22,7 +22,7 @@
 {% block body %}
 
 
-<body>
+<body ng-keyup="keyUpListener($event)">
     <noscript>
      For full functionality of this site it is necessary to enable JavaScript.
      Here are the http://www.enable-javascript.com
@@ -503,6 +503,9 @@
                   <button type="button" ng-click="changeLanguage('ru')" class="btn btn-default navbar-btn" ng-class="{'active': lang == 'ru'}">Русский</button>
                 </div>
                 </div>
+              </li>
+              <li class="list-group-item">
+                <button type="button" class="btn btn-default" ng-click="doScreenshot()">do screenshot</button>
               </li>
               <li ng-if="bidder_id" class="list-group-item"><a ng-href="logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> <span translate>Logout</span></a></li>
         </ul>

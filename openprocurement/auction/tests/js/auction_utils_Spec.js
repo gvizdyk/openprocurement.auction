@@ -51,11 +51,8 @@ describe('Unit: Testing AuctionUtils "prepare_info_timer_data" ', function() {
 
   it('should inform about expectations start of the auction', angular.mock.inject(['AuctionUtils', function(AuctionUtils) {
     auction.current_stage = -1;
-    auction.stages[0].start = 
-    expect(AuctionUtils.prepare_info_timer_data(current_time, auction, bidder_id, Rounds)).toEqual({
-      countdown: true,
-      start_time: false,
-      msg: 'Waiting'
-    });
+    let result = AuctionUtils.prepare_info_timer_data(current_time, auction, bidder_id, Rounds);
+    expect(result.start_time).toEqual(false);
+    expect(result.msg).toEqual('until the auction starts');
   }]));
 });
